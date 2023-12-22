@@ -22,10 +22,14 @@ with open("page.html", "r", encoding="utf8") as file:
 
 soup = BeautifulSoup(src, "lxml")
 
-all_rows = soup.find("tbody").find("tr")
+all_rows = soup.find("tbody").find("tr").find_all("td")
 
+result = {}
 
-# lst = []
+# for i in range(133):
+result[all_rows[0].text] = "https://диктант.научим.рф" + all_rows[-1].find("a").get("href")
+
+print(result)
 
 # for row in all_rows:
 #     if row != "\n":
