@@ -34,9 +34,9 @@ result[all_rows[0].text] = "https://диктант.научим.рф" + all_rows
 #         image.write(get(link, headers=headers))
 
 for name, link in result.items():
-    new = get(link, headers=headers)
+    certificate = get(link, headers=headers)
     with open(f'{name}.jpg', "wb") as file:
-        file.write(new.content)
+        file.write(certificate.content)
         
     
 
