@@ -27,7 +27,11 @@ all_rows = soup.find("tbody").find_all("tr")
 result = {}
 counter = 1
 
-print(all_rows[0])
+new_soup = BeautifulSoup(all_rows, "lxml")
+
+new_all_rows = new_soup.find("td")
+
+print(new_all_rows)
 
 # Нужно применить методы парсинга к row!
 
