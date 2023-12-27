@@ -22,16 +22,32 @@ with open("page.html", "r", encoding="utf8") as file:
 
 soup = BeautifulSoup(src, "lxml")
 
-all_rows = soup.find("tbody").find("tr").find_all("td")
+all_rows = soup.find("tbody").find_all("tr")
 
 result = {}
+counter = 1
 
-result[all_rows[0].text] = "https://диктант.научим.рф" + all_rows[-1].find("a").get("href")
+print(all_rows[0])
 
-for name, link in result.items():
-    certificate = get(link, headers=headers)
-    with open(f'{name}.jpg', "wb") as file:
-        file.write(certificate.content)
+# Нужно применить методы парсинга к row!
+
+# for row in all_rows:
+#     print(row)
+
+
+    # if row[0].text not in result:
+    #     result[row[0].text] = "https://диктант.научим.рф" + row[-1].find("a").get("href")
+    # else:
+    #     result[row[0].text + str(counter)] = "https://диктант.научим.рф" + row[-1].find("a").get("href")
+    #     counter += 1
+
+
+# print(result)
+
+# for name, link in result.items():
+#     certificate = get(link, headers=headers)
+#     with open(f'{name}.jpg', "wb") as file:
+#         file.write(certificate.content)
         
     
 
