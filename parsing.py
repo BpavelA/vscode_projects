@@ -26,12 +26,7 @@ all_rows = soup.find("tbody").find("tr").find_all("td")
 
 result = {}
 
-# for i in range(133):
 result[all_rows[0].text] = "https://диктант.научим.рф" + all_rows[-1].find("a").get("href")
-
-# for name, link in result.items():
-#     with open(f'{name}.png', "w") as image:
-#         image.write(get(link, headers=headers))
 
 for name, link in result.items():
     certificate = get(link, headers=headers)
