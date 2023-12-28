@@ -27,31 +27,19 @@ all_rows = soup.find("tbody").find_all("tr")
 result = {}
 counter = 1
 
-new_soup = BeautifulSoup(all_rows, "lxml")
+for row in all_rows:
+    name = row.find_all("td")[0].text.strip()
+    link = row.find_all("td")[-1].find("a").get("href")
+    if name not in result:
+        result[name] = "https://диктант.научим.рф" + link
+    else:
+        result[name + str(counter)] = "https://диктант.научим.рф" + link
+        counter += 1
 
-new_all_rows = new_soup.find("td")
-
-print(new_all_rows)
-
-# Нужно применить методы парсинга к row!
-
-# for row in all_rows:
-#     print(row)
-
-
-    # if row[0].text not in result:
-    #     result[row[0].text] = "https://диктант.научим.рф" + row[-1].find("a").get("href")
-    # else:
-    #     result[row[0].text + str(counter)] = "https://диктант.научим.рф" + row[-1].find("a").get("href")
-    #     counter += 1
-
-
-# print(result)
-
-# for name, link in result.items():
-#     certificate = get(link, headers=headers)
-#     with open(f'{name}.jpg', "wb") as file:
-#         file.write(certificate.content)
+for name, link in result.items():
+    certificate = get(link, headers=headers)
+    with open(f'{name}.jpg', "wb") as file:
+        file.write(certificate.content)
         
     
 
