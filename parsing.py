@@ -15,7 +15,7 @@ headers = {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,imag
 # with open("page.html", "w", encoding="utf8") as file:
 #     file.write(site)
 
-#Step 2
+# Step 2
 
 with open("page.html", "r", encoding="utf8") as file:
     src = file.read()
@@ -38,7 +38,7 @@ for row in all_rows:
 
 for name, link in result.items():
     certificate = get(link, headers=headers)
-    with open(f'{name}.jpg', "wb") as file:
+    with open(f'cert/{name}.jpg', "wb") as file:
         file.write(certificate.content)
         
     
